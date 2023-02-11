@@ -1,24 +1,53 @@
+//Generate canvas
+
+let c_height = document.getElementById('canvas-container').clientHeight - 30 
+let c_width = document.getElementById('canvas-container').clientWidth - 100
+
+document.getElementById('canvas-container').innerHTML = `
+    <canvas id="canvas" height="${c_height}" width="${c_width}"></canvas>   
+`
+
+//Attributes and settings
 const canvas = document.getElementById("canvas")
 var ctx = canvas.getContext("2d")
+ctx.fillStyle = "#FFFFFF"
 
-let originalDots = [[500/2, 50/2], [50/2, 950/2], [950/2, 950/2]]
+let display = document.getElementById("display-1")
+let display2 = document.getElementById("display-2")
+display.innerHTML = 'Olá! Este console te dará todas as instruções necessárias para executar o programa.<br>Defina o primeiro ponto...'
+display2.innerHTML = 'Este console te dará o feedback relacionado à execução do programa.<br>Aguardando pelas instruções do usuário...'
+
+let originalDots = []
 let dots = []
-let maxDots = 200000
+let maxDots = 2000
+let dotSize = 1
 
-let dotSize = 5
-
-for(i = 0; i < originalDots.length; i++) {
-    ctx.fillRect(originalDots[i][0],originalDots[i][1], dotSize, dotSize)
-}
-
+//Functions
 function getMousePosition(canvas, event) {
     let rect = canvas.getBoundingClientRect();
     let x = event.clientX - rect.left;
     let y = event.clientY - rect.top;
-    ctx.fillRect(x, y, dotSize, dotSize)
-    dots[0] = [x, y]
+    
+    if(originalDots.length < 3) {
+        ctx.fillRect(x, y, dotSize, dotSize)
+        originalDots[originalDots.length] = [x, y]
 
-    sierpinkski()
+        switch(originalDots.length){
+            case 1:
+                display.innerHTML = 'Segundo...'
+                break;
+            case 2:
+                display.innerHTML = 'Agora o terceiro...'
+                break;
+            case 3:
+                display.innerHTML = 'Temos os três pontos originais que formarão o triângulo!<br>Por fim defina o ponto inicial para começarmos os cálculos...'
+                break;
+        }        
+    } else {
+        ctx.fillRect(x, y, dotSize, dotSize)
+        dots[0] = [x, y]
+        sierpinkski()
+    }
 }
 
 canvas.addEventListener("mousedown", function(e)
@@ -27,6 +56,7 @@ canvas.addEventListener("mousedown", function(e)
 });
 
 function sierpinkski() {
+    display.innerHTML = "Acompanhe a execução ao lado! :)"
     for(let i = 0; i < maxDots; i++){
         let random = Math.floor(Math.random() * originalDots.length)
         let calcX = (originalDots[random][0] + dots[i][0]) / 2
@@ -39,8 +69,16 @@ function sierpinkski() {
     let interval = setInterval(function() {
         ctx.fillRect(dots[j+1][0], dots[j+1][1], dotSize, dotSize)
         j++
+        display2.innerHTML = `
+            Em execução...<br>
+            Pontos criados: ${j} / ${maxDots}<br>
+            Tempo estimado: xhxxm
+        `
         if(j == maxDots){
+            // display.innerHTML = "Não importa a posição dos pontos originais nem do ponto inicial, seguindo as duas últimas regras recursivamente, sempre resultará na formação desse fractal!<br><br> Não conhece as regras? Clique no livro na barra de navegação<br><br> Quer recomeçar? Clique no botão destacado!"
+            display.innerHTML = "Não importa a posição dos pontos originais nem do ponto inicial, seguindo as duas últimas regras recursivamente, sempre resultará na formação desse fractal!"
+            display2.innerHTML = "Concluído!"
             clearInterval(interval)
         }
-    }, 1000)
+    }, 1)
 }

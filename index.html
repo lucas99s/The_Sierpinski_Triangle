@@ -6,22 +6,24 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Sierpinski Triangle</title>
     <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inconsolata&display=swap" rel="stylesheet">
 </head>
 <body>
     <div class="container">
         <nav class="navbar"></nav>
-        <section id="canvas-container" class="content">
-            <!-- <canvas id="canvas" style="border: 1px solid black"></canvas> -->
+        <section id="canvas-container">
+            <!-- Canvas here -->
+        </section>
+        <section id="display-container">
+            <div id="display-1" class="display"></div>
+            <div id="display-2" class="display"></div>
         </section>
     </div>
 </body>
 <script>
-    let c_height = document.getElementById('canvas-container').clientHeight - 100
-    let c_width = document.getElementById('canvas-container').clientWidth - 100
 
-    document.getElementById('canvas-container').innerHTML = `
-        <canvas id="canvas" height="${c_height}" width="${c_width}" style="border: 1px solid black"></canvas>   
-    `
 
 </script>
 <script src="sierpinski.js"></script>
