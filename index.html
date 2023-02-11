@@ -5,9 +5,24 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Sierpinski Triangle</title>
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <canvas id="canvas" width="1000" height="1000" style="border: 1px solid black"></canvas>
+    <div class="container">
+        <nav class="navbar"></nav>
+        <section id="canvas-container" class="content">
+            <!-- <canvas id="canvas" style="border: 1px solid black"></canvas> -->
+        </section>
+    </div>
 </body>
-<script src="script.js"></script>
+<script>
+    let c_height = document.getElementById('canvas-container').clientHeight - 100
+    let c_width = document.getElementById('canvas-container').clientWidth - 100
+
+    document.getElementById('canvas-container').innerHTML = `
+        <canvas id="canvas" height="${c_height}" width="${c_width}" style="border: 1px solid black"></canvas>   
+    `
+
+</script>
+<script src="sierpinski.js"></script>
 </html>

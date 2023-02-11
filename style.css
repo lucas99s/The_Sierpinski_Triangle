@@ -1,0 +1,38 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    overflow-x: hidden;
+}
+
+:root {
+    --nav-width: 80px;
+}
+
+.container {
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+}
+
+.navbar {
+    width: var(--nav-width);
+    background-color: rgb(24, 18, 52);
+    height: 100vh;
+    position: fixed;
+}
+
+#canvas {
+    position: absolute;
+    top: 0;
+    scale: 1;
+    margin-top: 50px;
+}
+
+.content {
+    width: calc(100vw - var(--nav-width));
+    margin-left: var(--nav-width);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
