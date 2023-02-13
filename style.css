@@ -71,3 +71,36 @@ body {
 .display, #canvas {
     border-radius: 7px;
 }
+
+.logo {
+    background-color: var(--secondary-color);
+    display: flex;
+}
+
+.logo svg {
+    color: white;
+    position: absolute;
+    top: 16.5px;
+}
+
+.logo svg:nth-child(2) {
+    position: relative;
+    scale: 1.8;
+    top: 0px;
+    transform: rotate(180deg);
+}
+
+.logo, .button-nav {
+    height: 60px;
+    width: 75px;
+    margin-top: 5px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.button-nav {
+    background-color: var(--secondary-color);
+    color: white;
+    border: none;
+}

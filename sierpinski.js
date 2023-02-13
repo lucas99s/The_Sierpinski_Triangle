@@ -62,6 +62,7 @@ function sierpinkski() {
         let calcX = (originalDots[random][0] + dots[i][0]) / 2
         let calcY = (originalDots[random][1] + dots[i][1]) / 2
         dots[i+1] = [calcX, calcY]    
+        
         // ctx.fillRect(dots[i+1][0], dots[i+1][1], dotSize, dotSize)
     }
 
@@ -71,7 +72,9 @@ function sierpinkski() {
         j++
         display2.innerHTML = `
             Em execução...<br>
-            Pontos criados: ${j} / ${maxDots}<br>
+            Pontos criados: ${j} / ${maxDots} <br>
+            X: ${dots[j][0]}<br>
+            Y: ${dots[j][1]}<br>
             Tempo estimado: xhxxm
         `
         if(j == maxDots){
