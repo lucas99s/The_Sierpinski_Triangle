@@ -22,6 +22,10 @@ let dots = []
 let maxDots = 2000
 let dotSize = 1
 
+function getAttributes() {
+    
+}
+
 //Functions
 function getMousePosition(canvas, event) {
     let rect = canvas.getBoundingClientRect();
