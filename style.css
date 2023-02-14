@@ -3,6 +3,7 @@
     padding: 0;
     box-sizing: border-box;
     overflow-x: hidden;
+    overflow-y: hidden;
     font-family: 'Inconsolata', monospace;
 }
 
@@ -15,6 +16,8 @@
     --tertiary-color-t: rgba(0, 191, 35, 0.4);
 
     --light-softness: 20px;
+
+    --animation: 0.3s;
 }
 
 body {
@@ -117,42 +120,69 @@ body {
     height: 100vh;
     width: 100%;
     justify-content: center;
-    align-items: center;
+    pointer-events: none;
 }
 
 .modal {
-    position: absolute;
-    height: 300px;
-    width: 500px;
+    position: relative;
+    display: flex;
+    margin: 0 5px;
+    height: 50px;
+    width: 60px;
+    top: -15px;
     background-color: var(--secondary-color);
     box-shadow: 0px 0px var(--light-softness) var(--tertiary-color-t);
     border: 1px solid var(--tertiary-color);
     border-radius: 15px;
     opacity: 1;
-    padding: 25px 50px;
-    display: flex;
+    padding: 15px 0px 5px 14px;
     flex-direction: column;
+    transition: var(--animation);
+    pointer-events: all;
+    z-index: 100;
 }
 
-.modal h2 {
+.modal-icon {
     color: white;
+}
+
+.modal-body p {
+    margin-top: 10px;
+    color: var(--tertiary-color);
+}
+
+.modal-title {
+    color: white;
+    opacity: 0;
+    width: 0;
+    transition: var(--animation);
+    font-weight: normal;
 }
 
 .modal hr {
     margin: 20px 0 10px;
 }
 
-.modal label {
+.modal-body label {
     color: white;
     margin: 10px 0 5px;
 }
 
-.modal input, select {
+.modal-body {
+    display: flex;
+    flex-direction: column;
+    opacity: 1;
+    height: 0;
+    transition: var(--animation);
+}
+
+.modal-body input, .modal-body select {
     background-color: var(--secondary-color);
     border: 1px solid var(--tertiary-color);
     color: white;
     height: 25px;
     padding-left: 10px;
+    border-radius: 5px;
 }
 
 .modal-head {
@@ -164,4 +194,16 @@ body {
     color: white;
     scale: 0.8;
     margin-right: 5px;
+}
+
+/* Chrome, Safari, Edge, Opera */
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+/* Firefox */
+input[type=number] {
+  -moz-appearance: textfield;
 }

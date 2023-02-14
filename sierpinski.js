@@ -19,11 +19,14 @@ display2.innerHTML = 'Este console te dará o feedback relacionado à execução
 
 let originalDots = []
 let dots = []
-let maxDots = 2000
-let dotSize = 1
+let maxDots
+let dotSize
+let execution
 
 function getAttributes() {
-    
+    maxDots = document.getElementById('max-dots').value
+    dotSize = document.getElementById('size').value
+    execution = document.getElementById('execution').value
 }
 
 //Functions
@@ -31,6 +34,7 @@ function getMousePosition(canvas, event) {
     let rect = canvas.getBoundingClientRect();
     let x = event.clientX - rect.left;
     let y = event.clientY - rect.top;
+    getAttributes()
     
     if(originalDots.length < 3) {
         ctx.fillRect(x, y, dotSize, dotSize)
@@ -67,25 +71,30 @@ function sierpinkski() {
         let calcY = (originalDots[random][1] + dots[i][1]) / 2
         dots[i+1] = [calcX, calcY]    
         
-        // ctx.fillRect(dots[i+1][0], dots[i+1][1], dotSize, dotSize)
+        if(execution == 'i') {
+            ctx.fillRect(dots[i+1][0], dots[i+1][1], dotSize, dotSize)
+            display2.innerHTML = 'Concluído!'
+        }
     }
 
-    let j = 0
-    let interval = setInterval(function() {
-        ctx.fillRect(dots[j+1][0], dots[j+1][1], dotSize, dotSize)
-        j++
-        display2.innerHTML = `
-            Em execução...<br>
-            Pontos criados: ${j} / ${maxDots} <br>
-            X: ${dots[j][0]}<br>
-            Y: ${dots[j][1]}<br>
-            Tempo estimado: xhxxm
-        `
-        if(j == maxDots){
-            // display.innerHTML = "Não importa a posição dos pontos originais nem do ponto inicial, seguindo as duas últimas regras recursivamente, sempre resultará na formação desse fractal!<br><br> Não conhece as regras? Clique no livro na barra de navegação<br><br> Quer recomeçar? Clique no botão destacado!"
-            display.innerHTML = "Não importa a posição dos pontos originais nem do ponto inicial, seguindo as duas últimas regras recursivamente, sempre resultará na formação desse fractal!"
-            display2.innerHTML = "Concluído!"
-            clearInterval(interval)
-        }
-    }, 1)
+    if(execution == 'p'){
+        let j = 0
+        let interval = setInterval(function() {
+            ctx.fillRect(dots[j+1][0], dots[j+1][1], dotSize, dotSize)
+            j++
+            display2.innerHTML = `
+                Em execução...<br>
+                Pontos criados: ${j} / ${maxDots} <br>
+                X: ${dots[j][0]}<br>
+                Y: ${dots[j][1]}<br>
+                Tempo estimado: xhxxm
+            `
+            if(j == maxDots){
+                // display.innerHTML = "Não importa a posição dos pontos originais nem do ponto inicial, seguindo as duas últimas regras recursivamente, sempre resultará na formação desse fractal!<br><br> Não conhece as regras? Clique no livro na barra de navegação<br><br> Quer recomeçar? Clique no botão destacado!"
+                display.innerHTML = "Não importa a posição dos pontos originais nem do ponto inicial, seguindo as duas últimas regras recursivamente, sempre resultará na formação desse fractal!"
+                display2.innerHTML = "Concluído!"
+                clearInterval(interval)
+            }
+        }, 1)
+    }
 }
