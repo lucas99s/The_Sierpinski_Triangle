@@ -44,13 +44,13 @@
                 <div class="modal-body">
                     <hr>
                     <label>Quantidade de iterações:</label>
-                    <input id="max-dots" type="number" value="25000">
+                    <input id="max-dots" type="number" value="10000">
                     <label>Tamanho:</label>
-                    <input id="size" type="number" value="1">
-                    <label>Velocidade (ms):</label>
-                    <input id="speed" type="number" value="1">
+                    <input id="size" type="number" value="2">
+                    <label id="speedL">Pontos por segundo:</label>
+                    <input id="speed" type="number" value="100">
                     <label>Execução:</label>
-                    <select id="execution">
+                    <select id="execution" onclick="selectVerify()">
                         <option value="p">Progressiva</option>
                         <option value="i">Instantânea</option>
                     </select>

@@ -183,6 +183,11 @@ body {
     height: 25px;
     padding-left: 10px;
     border-radius: 5px;
+    transition: var(--animation);
+}
+
+label {
+    transition: var(--animation);
 }
 
 .modal-head {
@@ -206,4 +211,8 @@ input::-webkit-inner-spin-button {
 /* Firefox */
 input[type=number] {
   -moz-appearance: textfield;
+}
+
+input:focus, input:focus-visible, select:focus, select:focus-visible {
+    outline: none;
 }

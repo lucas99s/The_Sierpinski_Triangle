@@ -60,8 +60,7 @@ function getMousePosition(canvas, event) {
     }
 }
 
-canvas.addEventListener("mousedown", function(e)
-{
+canvas.addEventListener("mousedown", function(e){
     getMousePosition(canvas, e);
 });
 
@@ -80,23 +79,38 @@ function sierpinkski() {
     }
 
     if(execution == 'p'){
-        let j = 0
+        let rep = 0
+        let second = 0
+        let estimatedTime = 'Calculando...'
+        let avarage = 'Calculando...'
+
+        let estimate = setInterval(function() {
+            avarage = Math.floor(rep / second)
+            estimatedTime = Math.floor((maxDots - rep) / avarage) - 1
+            second++
+        }, 1000)
+
         let interval = setInterval(function() {
-            ctx.fillRect(dots[j+1][0], dots[j+1][1], dotSize, dotSize)
-            j++
-            display2.innerHTML = `
-                Em execução...<br>
-                Pontos criados: ${j} / ${maxDots} <br>
-                X: ${dots[j][0]}<br>
-                Y: ${dots[j][1]}<br>
-                Tempo estimado: xhxxm
-            `
-            if(j == maxDots){
+            if(second >= 1){
+                ctx.fillRect(dots[rep+1][0], dots[rep+1][1], dotSize, dotSize)
+                rep++
+                display2.innerHTML = `
+                    Em execução...<br>
+                    Pontos criados: ${rep} / ${maxDots} <br>
+                    Tempo estimado: ${estimatedTime} segundos<br> 
+                    Pontos por segundo(*): ${avarage}
+                    <br><br>
+                    (*)Afeta o tempo estimado, ou seja, se o valor oscilar, o tempo estimado mudará.
+                `
+            }
+            if(rep == maxDots){
                 // display.innerHTML = "Não importa a posição dos pontos originais nem do ponto inicial, seguindo as duas últimas regras recursivamente, sempre resultará na formação desse fractal!<br><br> Não conhece as regras? Clique no livro na barra de navegação<br><br> Quer recomeçar? Clique no botão destacado!"
                 display.innerHTML = "Não importa a posição dos pontos originais nem do ponto inicial, seguindo as duas últimas regras recursivamente, sempre resultará na formação desse fractal!"
                 display2.innerHTML = "Concluído!"
                 clearInterval(interval)
+                clearInterval(estimate)
             }
-        }, speed)
+        }, 1000 / speed)
+        
     }
 }
