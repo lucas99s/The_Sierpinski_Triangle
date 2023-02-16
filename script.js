@@ -15,9 +15,9 @@ function showModal(id) {
         modal[id].style.top = '150px'
         modal[id].style.padding = '25px 50px'
         modal[id].style.width = '500px'
-        modal[id].style.height = '300px'
+        modal[id].style.height = '350px'
         modalBody[id].style.opacity = '1'
-        modalBody[id].style.height = '220px'
+        modalBody[id].style.height = '250px'
         modalTitle[id].style.width = '100%'
         modalTitle[id].style.opacity = '1'
     } else {
@@ -31,4 +31,9 @@ function showModal(id) {
         modalTitle[id].style.width = '0'
         modalTitle[id].style.opacity = '0'
     }
+}
+
+function reset() {
+    console.log('teste')
+    location.reload()
 }

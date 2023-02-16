@@ -22,11 +22,13 @@ let dots = []
 let maxDots
 let dotSize
 let execution
+let speed
 
 function getAttributes() {
     maxDots = document.getElementById('max-dots').value
     dotSize = document.getElementById('size').value
     execution = document.getElementById('execution').value
+    speed = document.getElementById('speed').value
 }
 
 //Functions
@@ -95,6 +97,6 @@ function sierpinkski() {
                 display2.innerHTML = "Concluído!"
                 clearInterval(interval)
             }
-        }, 1)
+        }, speed)
     }
 }
