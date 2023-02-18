@@ -35,18 +35,21 @@ function getAttributes() {
 }
 
 let squareArr = [[c_height/100*10, c_height/100*10], [c_height/100*90, c_height/100*10], [c_height/100*90, c_height/100*90],[c_height/100*10, c_height/100*90]]
-
+let pentagonArr = [[c_height/100*50, c_height/100*10], [c_height/100*90, c_height/100*38], [c_height/100*75, c_height/100*85],[c_height/100*25, c_height/100*85], [c_height/100*10, c_height/100*38]]
+let hexagonArr = [[c_height/100*50, c_height/100*10], [c_height/100*90, c_height/100*30],[c_height/100*90, c_height/100*70],[c_height/100*50, c_height/100*85],[c_height/100*10, c_height/100*70],[c_height/100*10, c_height/100*30]]
+shapeRender()
 function shapeRender() {
     let type = document.getElementById('shape').value
-    let sRender = []
     if(type == 'q'){
-
-        sRender = squareArr
         originalDots = squareArr
-    }    
+    } else if (type == 'p') {
+        originalDots = pentagonArr
+    } else if (type == 'h') {
+        originalDots = hexagonArr
+    }
     
-    for(let i = 0; i < sRender.length; i++) {
-        ctx.fillRect(sRender[i][0], sRender[i][1], 2, 2)
+    for(let i = 0; i < originalDots.length; i++) {
+        ctx.fillRect(originalDots[i][0], originalDots[i][1], 2, 2)
         sierpinkski()
     }
 }
