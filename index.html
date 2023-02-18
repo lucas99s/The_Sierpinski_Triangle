@@ -10,7 +10,7 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inconsolata&display=swap" rel="stylesheet">
 </head>
-<body>
+<body onload="shapeSelect()">
     <div class="container">
         <nav class="navbar">
             <button class="logo">
@@ -61,9 +61,27 @@
                     <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-book-open"><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"></path><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"></path></svg>
                     <h2 class="modal-title">Como funciona?</h2>
                 </div>
-                <div class="modal-body">
+                <div id="rules" class="modal-body">
                     <hr>
                     <p>Regra #1:</p>
+                </div>
+            </div>
+            <div class="modal">
+                <div class="modal-head" onclick="showModal(2)">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-hexagon"><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"></path></svg>
+                    <h2 class="modal-title">Outras formas</h2>
+                </div>
+                <div class="modal-body" >
+                    <hr>
+                    <label>Formas:</label>
+                    <select id="shape" onclick="shapeSelect()">
+                        <option value="t" selected>Triângulo de Sierpinski</option>
+                        <option value="q">Quadrado</option>
+                        <option value="p">Pentágono</option>
+                        <option value="h">hexágono</option>
+                    </select>
+                    <p>Diferentemente do triângulo de Sierpinski, essas outras formas necessitam ter pontos equidistantes para funcionar, por essa razão, eles serão colocados automaticamente, tudo o que você precisará fazer é colocar um ponto aleatório na tela para que os cálculos comecem a partir do seu ponto.</p>
+                    <p>Saiba mais clicando no ícone do livro.</p>
                 </div>
             </div>
         </div>

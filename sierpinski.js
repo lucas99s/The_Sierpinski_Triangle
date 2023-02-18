@@ -65,9 +65,14 @@ canvas.addEventListener("mousedown", function(e){
 });
 
 function sierpinkski() {
+    let lastPoint
     display.innerHTML = "Acompanhe a execução ao lado! :)"
     for(let i = 0; i < maxDots; i++){
         let random = Math.floor(Math.random() * originalDots.length)
+        // while(random == lastPoint){
+        //     random = Math.floor(Math.random() * originalDots.length)
+        // }
+        // lastPoint = random
         let calcX = (originalDots[random][0] + dots[i][0]) / 2
         let calcY = (originalDots[random][1] + dots[i][1]) / 2
         dots[i+1] = [calcX, calcY]    
@@ -86,7 +91,7 @@ function sierpinkski() {
 
         let estimate = setInterval(function() {
             avarage = Math.floor(rep / second)
-            estimatedTime = Math.floor((maxDots - rep) / avarage) - 1
+            estimatedTime = Math.floor((maxDots - rep) / avarage)
             second++
         }, 1000)
 

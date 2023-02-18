@@ -5,6 +5,8 @@ let modalBody = document.getElementsByClassName('modal-body')
 
 let speedInput = document.getElementById('speed')
 let speedLabel = document.getElementById('speedL')
+let modalRules = document.getElementById('rules')
+let shape = document.getElementById('shape')
 
 let active = []
 
@@ -52,7 +54,14 @@ function selectVerify() {
     }
 }
 
+function shapeSelect() {
+    if(shape.value == 'q' || shape.value == 'p' || shape.value == 'h') {
+        modalRules.innerHTML = '<p>Outras formas</p>'
+    } else {
+        modalRules.innerHTML = "<p>Sierpinski</p>"
+    }
+}
+
 function reset() {
-    console.log('teste')
     location.reload()
 }
