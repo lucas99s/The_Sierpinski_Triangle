@@ -23,15 +23,34 @@ let maxDots
 let dotSize
 let execution
 let speed
+let shapeType
 
+//Functions
 function getAttributes() {
     maxDots = document.getElementById('max-dots').value
     dotSize = document.getElementById('size').value
     execution = document.getElementById('execution').value
     speed = document.getElementById('speed').value
+    shapeType = document.getElementById('shape').value
 }
 
-//Functions
+let squareArr = [[c_height/100*40, c_height/100*10], [c_height/100*60, c_height/100*10], [c_height/100*90, c_height/100*90],[c_height/100*10, c_height/100*90]]
+
+function shapeRender() {
+    let type = document.getElementById('shape').value
+    let sRender = []
+    if(type == 'q'){
+
+        sRender = squareArr
+        originalDots = squareArr
+    }    
+    
+    for(let i = 0; i < sRender.length; i++) {
+        ctx.fillRect(sRender[i][0], sRender[i][1], 2, 2)
+        sierpinkski()
+    }
+}
+
 function getMousePosition(canvas, event) {
     let rect = canvas.getBoundingClientRect();
     let x = event.clientX - rect.left;
@@ -69,10 +88,12 @@ function sierpinkski() {
     display.innerHTML = "Acompanhe a execução ao lado! :)"
     for(let i = 0; i < maxDots; i++){
         let random = Math.floor(Math.random() * originalDots.length)
-        // while(random == lastPoint){
-        //     random = Math.floor(Math.random() * originalDots.length)
-        // }
-        // lastPoint = random
+        if(shapeType != 't') {
+            while(random == lastPoint){
+                random = Math.floor(Math.random() * originalDots.length)
+            }
+            lastPoint = random
+        }
         let calcX = (originalDots[random][0] + dots[i][0]) / 2
         let calcY = (originalDots[random][1] + dots[i][1]) / 2
         dots[i+1] = [calcX, calcY]    
