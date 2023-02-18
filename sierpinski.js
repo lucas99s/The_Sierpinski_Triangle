@@ -34,7 +34,7 @@ function getAttributes() {
     shapeType = document.getElementById('shape').value
 }
 
-let squareArr = [[c_height/100*40, c_height/100*10], [c_height/100*60, c_height/100*10], [c_height/100*90, c_height/100*90],[c_height/100*10, c_height/100*90]]
+let squareArr = [[c_height/100*10, c_height/100*10], [c_height/100*90, c_height/100*10], [c_height/100*90, c_height/100*90],[c_height/100*10, c_height/100*90]]
 
 function shapeRender() {
     let type = document.getElementById('shape').value
