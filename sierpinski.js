@@ -1,7 +1,7 @@
 //Generate canvas
 
 let c_height = document.getElementById('canvas-container').clientHeight - 30 
-let c_width = document.getElementById('canvas-container').clientWidth - 100
+let c_width = document.getElementById('canvas-container').clientWidth - 50
 
 document.getElementById('canvas-container').innerHTML = `
     <canvas id="canvas" height="${c_height}" width="${c_width}"></canvas>   
@@ -140,6 +140,5 @@ function sierpinkski() {
                 clearInterval(estimate)
             }
         }, 1000 / speed)
-        
     }
 }
