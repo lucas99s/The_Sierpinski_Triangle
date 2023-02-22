@@ -157,6 +157,7 @@ body {
 .modal-body p {
     margin-top: 10px;
     color: var(--tertiary-color);
+    overflow: revert;
 }
 
 .modal-title {
@@ -182,6 +183,7 @@ body {
     opacity: 1;
     height: 0;
     transition: var(--animation);
+    overflow-y: auto;
 }
 
 .modal-body input, .modal-body select {

@@ -56,9 +56,24 @@ function selectVerify() {
 
 function shapeSelect() {
     if(shape.value == 'q' || shape.value == 'p' || shape.value == 'h') {
-        modalRules.innerHTML = '<p>Outras formas</p>'
+        modalRules.innerHTML = `
+        <hr>
+        <p>Para todas as demais formas, existe apenas uma diferença comparado as regras do Triângulo de Sierpinkski.</p>
+
+        <p>Na regra N°3 para formar o fractal triangular, devemos apenas escolher um dos três pontos originais, mas se aplicarmos essa mesma regra para as demais formas, os pontos formarão um caos ao invés de um fractal.</p>
+        <p>Para resolver esse problema, devemos colocar uma condição para a escolha desse ponto, sendo possível a formação do fractal. Essa condição é: </p>
+        <p>Escolher um dos pontos originais desde que não seja o mesmo selecionado no cálculo anterior.</p>
+        `
     } else {
-        modalRules.innerHTML = "<p>Sierpinski</p>"
+        modalRules.innerHTML = `
+        <hr>
+        <p>Existem 4 regras simples para formar o Triângulo de Sierpinski.</p>
+
+        <p>Regra #1: Defina três pontos de forma que eles formem um triângulo. Chamaremos eles de "pontos originais" apenas para futuras referências.</p>
+        <p>Regra nº 2: Coloque um ponto aleatório em qualquer lugar da tela.</p>
+        <p>Regra nº 3: A partir do ponto que você acabou de criar, selecione um dos pontos originais e crie um novo ponto na metade da distância entre eles.</p>
+        <p>Regra nº 4: Repita a Regra nº 3 a partir do último ponto criado.</p>
+        `
     }
 }
 
