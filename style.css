@@ -87,6 +87,21 @@ body {
     border-radius: 7px;
 }
 
+.buttons-modals {
+    height: 8%;
+    width: 25%;
+    display: flex;
+    justify-content: space-between;
+}
+
+.buttons-modals button {
+    height: 100%;
+    width: 31%;
+    border-radius: 7px;
+    /* border: 1px solid var(--tertiary-color); */
+    background-color: var(--secondary-color);
+}
+
 .logo {
     background-color: var(--secondary-color);
     display: flex;
@@ -126,7 +141,7 @@ body {
     padding-left: var(--nav-width);
     padding-bottom: 150px;
     height: 100vh;
-    width: 100%;
+    width: 75%;
     justify-content: center;
     pointer-events: none;
 }
@@ -157,7 +172,7 @@ body {
 .modal-body p {
     margin-top: 10px;
     color: var(--tertiary-color);
-    overflow: revert;
+    /* overflow: revert; */
 }
 
 .modal-title {
@@ -166,6 +181,10 @@ body {
     width: 0;
     transition: var(--animation);
     font-weight: normal;
+}
+
+.modal-text {
+    overflow: auto;
 }
 
 .modal hr {
@@ -183,7 +202,7 @@ body {
     opacity: 1;
     height: 0;
     transition: var(--animation);
-    overflow-y: auto;
+    /* overflow-y: auto; */
 }
 
 .modal-body input, .modal-body select {
@@ -226,3 +245,28 @@ input[type=number] {
 input:focus, input:focus-visible, select:focus, select:focus-visible {
     outline: none;
 }
+
+
+/* Scroll style */
+/* width */
+::-webkit-scrollbar {
+    width: 5px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+    border-radius: 5px;
+    background: var(--seconday-color);
+    border: 1px solid var(--tertiary-color-t);
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+    border-radius: 5px;
+    background: var(--tertiary-color);
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+    background: white;
+  }
