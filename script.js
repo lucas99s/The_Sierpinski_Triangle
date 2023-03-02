@@ -1,7 +1,9 @@
 let modalContainer = document.getElementsByClassName('modal-container')
 let modal = document.getElementsByClassName('modal')
 let modalTitle = document.getElementsByClassName('modal-title')
+let modalHead = document.getElementsByClassName('modal-head')
 let modalBody = document.getElementsByClassName('modal-body')
+let closeModal = document.getElementsByClassName('close-modal')
 
 let speedInput = document.getElementById('speed')
 let speedLabel = document.getElementById('speedL')
@@ -25,6 +27,8 @@ function showModal(id) {
         modalBody[id].style.height = '260px'
         modalTitle[id].style.width = '100%'
         modalTitle[id].style.opacity = '1'
+        closeModal[id].style.width = '40px'
+        closeModal[id].style.opacity = '1'
     } else {
         active[id] = false
         modal[id].style.top = '-15px'
@@ -35,6 +39,8 @@ function showModal(id) {
         modalBody[id].style.height = '0'
         modalTitle[id].style.width = '0'
         modalTitle[id].style.opacity = '0'
+        closeModal[id].style.width = '0'
+        closeModal[id].style.opacity = '0'
     }
 }
 
